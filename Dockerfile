@@ -11,4 +11,4 @@ RUN rm -f package-lock.json
 RUN npm cache clean --force
 RUN npm install --no-package-lock
 EXPOSE 5000
-ENTRYPOINT ["index.js"]
+ENTRYPOINT ["npm", "start"]
