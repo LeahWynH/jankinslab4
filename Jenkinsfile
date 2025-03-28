@@ -17,7 +17,7 @@ pipeline{
             }
             stage (“Run”){
                     steps {
-                        sh 'docker run -d --name nodejs-project jenkinslab4'
+                        sh 'docker run -d -p 80:5000 --name nodejs-project jenkinslab4'
                     }
             }
             stage (“Check”){
