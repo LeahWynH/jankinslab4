@@ -12,7 +12,7 @@ pipeline{
             
             stage (“Build”){
                     steps {
-                        sh 'docker build -t jenkinslab4 ./nodejs-project'
+                        sh 'docker build -t jenkinslab4 .'
                     }
             }
             stage (“Run”){
