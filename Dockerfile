@@ -1,6 +1,14 @@
 FROM node:latest
 RUN git clone https://github.com/LeahWynH/jankinslab4.git
+
+WORKDIR /app
+
+COPY package*.json ./
+
+# Add these steps in this specific order
+RUN rm -rf node_modules
+RUN rm -f package-lock.json
 RUN npm cache clean --force
-RUN npm install
+RUN npm install --no-package-lock
 EXPOSE 5000
 ENTRYPOINT ["index.js"]
