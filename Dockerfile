@@ -1,9 +1,8 @@
 FROM node:latest
-RUN git clone https://github.com/LeahWynH/jankinslab4.git
 
 WORKDIR /app
 
-COPY package*.json ./
+COPY . .
 
 # Add these steps in this specific order
 RUN rm -rf node_modules
