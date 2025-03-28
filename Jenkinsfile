@@ -4,8 +4,28 @@ pipeline{
         stages{
             stage (“Prep”){
                     steps {
-                        sh 'echo connected'
+                        sh 'docker rm -vf $(docker ps -a -q) || true'
+                        sh 'docker rmi -f $(docker images -a -q) || true'
+                        sh 'docker builder prune --all --force'
                     }
                 }
+            
+            stage (“Build”){
+                    steps {
+                        sh 'docker build -t jenkinslab4 ./nodejs-project'
+                    }
+            }
+            stage (“Run”){
+                    steps {
+                        sh 'docker run -d --name nodejs-project jenlab4'
+                    }
+            }
+            stage (“Check”){
+                steps{
+                        sh 'docker ps -a'
+                    }
+
+
         }
+}
 }
